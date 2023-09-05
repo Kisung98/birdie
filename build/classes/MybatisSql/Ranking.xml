@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MybatisSql.Member">
+
+	<select id="rankingList" resultType="java.util.Map">
+		SELECT
+		rownum ,
+		MEM_SCORE,
+		MEM_ID
+		FROM
+		(SELECT
+		mem_score,
+		mem_id
+		FROM
+		MEMBER2
+		ORDER BY
+		mem_score DESC)
+
+	</select>
+
+
+
+
+
+</mapper>

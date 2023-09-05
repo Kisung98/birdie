@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MybatisSql.Reservation">
+
+	<!--예약이랑 멤버테이블이랑 조인해서 전체조회 -->
+	<select id="reservationList" resultType="java.util.Map">
+		SELECT
+		r.RES_NO ,
+		r.RES_DATE ,
+		r.pay_amount,
+		r.res_ptotal,
+		r.RES_ROOMNO,
+		r.res_time,
+		m.MEM_NO ,
+		m.MEM_ID,
+		m.mem_name
+		FROM
+		RESERVATION r
+		INNER JOIN
+		MEMBER2 m ON
+		r.MEM_NO =
+		m.MEM_NO order by r.RES_NO
+	</select>
+
+	<select id="reservationListSearch" resultType="java.util.Map"
+		parameterType="java.lang.String">
+		SELECT
+		r.RES_NO ,
+		r.RES_DATE ,
+		r.pay_amount,
+		r.res_ptotal,
+		r.RES_ROOMNO,
+		r.res_time,
+		m.MEM_NO ,
+		m.MEM_ID,
+		m.mem_name
+		FROM
+		RESERVATION r
+		INNER JOIN
+		MEMBER2 m ON
+		r.MEM_NO =
+		m.MEM_NO where m.mem_name=#{mem_name}
+		order by
+		r.RES_NO
+	</select>
+
+	<select id="reservationDetail" resultType="java.util.Map"
+		parameterType="Integer">
+		SELECT
+		r.RES_NO ,
+		r.RES_DATE ,
+		r.pay_amount,
+		r.res_ptotal,
+		r.RES_ROOMNO,
+		r.res_time,
+		m.MEM_NO ,
+		m.MEM_ID,
+		m.mem_name
+		FROM
+		RESERVATION r
+		INNER JOIN MEMBER2 m ON
+		r.MEM_NO = m.MEM_NO
+		WHERE
+		r.RES_NO
+		=#{res_no}
+		ORDER
+		BY
+		r.RES_NO
+	</select>
+
+
+	<delete id="reservationDelete" parameterType="Integer">
+		delete from
+		reservation
+		where res_no=#{res_no}
+	</delete>
+
+	<update id="reservationUpdate">
+
+
+	</update>
+
+
+</mapper>

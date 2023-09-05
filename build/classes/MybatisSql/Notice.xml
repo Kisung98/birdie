@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MybatisSql.Notice">
+
+<!--공지사항 전체조회-->
+	<select id="noticeList" resultType="Vo.NoticeVo">
+		select * from notice1 order by notice_no
+	</select>
+
+<!--공지사항 글검색-->
+	<select id="noticeListSearch" resultType="Vo.NoticeVo" parameterType="java.lang.String">
+		select * from notice1 where notice_title = #{notice_title}
+	</select>
+
+<!--공지사항 글쓰기-->
+	<insert id="noticeInsert" parameterType="Vo.NoticeVo">
+		INSERT INTO NOTICE1 VALUES (notice_no.nextval,#{notice_title},TO_CHAR(SYSDATE,'YYYY-MM-DD'),#{notice_content})
+	</insert>
+
+<!--공지사항 삭제-->
+<delete id="noticeDelete" parameterType="Integer">
+delete from notice1 where notice_no=#{notice_no}
+</delete>
+
+
+</mapper>

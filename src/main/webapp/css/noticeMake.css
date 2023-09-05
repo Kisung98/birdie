@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	border-radius: 8px;
+	overflow: hidden;
+	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+	padding: 12px;
+	text-align: left;
+	background-color: #f7f7f7;
+	color: #333;
+}
+
+th {
+
+	font-weight: bold;
+}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+tr:hover {
+	background-color: #ffeb3b;
+}
+
+textarea {
+	height: 200px;
+}
+
+input {
+	border-radius: 5px;
+}
